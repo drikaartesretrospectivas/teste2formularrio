@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  padding: 20px;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: auto;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<form>
+<h2>Pedido de Orçamento</h2>
+
+<input type="text" id="nome" placeholder="Nome da criança" required>
+<input type="text" id="tema" placeholder="Tema da festa" required>
+<input type="date" id="data" required>
+
+<select id="tipo">
+  <option value="">Tipo de Produto</option>
+  <option>Convite</option>
+  <option>Retrospectiva</option>
+  <option>Moldura para fotos</option>
+</select>
+
+<button type="button" onclick="enviarWhats()">Enviar para WhatsApp</button>
+</form>
+
+<script>
+function enviarWhats() {
+
+  let nome = document.getElementById("nome").value;
+  let tema = document.getElementById("tema").value;
+  let data = document.getElementById("data").value;
+  let tipo = document.getElementById("tipo").value;
+
+  let mensagem =
+`✨ NOVO PEDIDO DE ORÇAMENTO ✨
+
+👶 Nome: ${nome}
+🎉 Tema: ${tema}
+📅 Data: ${data}
+📦 Tipo: ${tipo}
+`;
+
+  let numero = "5511999999999"; // TROQUE PELO SEU NUMERO
+  let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensagem);
+
+  window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
